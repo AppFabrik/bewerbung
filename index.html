@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Online-Kurzbewerbung bei Taxi Pfeiffer in Blankenburg (Harz).">
+  <title>Online-Kurzbewerbung | Taxi Pfeiffer</title>
+  <style>
+    :root {
+      --yellow: #f0d629;
+      --yellow-soft: #fff3a6;
+      --ink: #171717;
+      --muted: #626262;
+      --line: #d7c85e;
+      --white: #fff;
+      --red: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--yellow);
+      font: 16px/1.5 Arial, Helvetica, sans-serif;
+    }
+    .page { width: min(100% - 28px, 900px); margin: 24px auto; }
+    .intro, .form-shell {
+      border: 1px solid rgba(0,0,0,.13);
+      box-shadow: 0 8px 26px rgba(0,0,0,.08);
+    }
+    .privacy a { color: #111; text-decoration: underline; }
+    .form-shell { margin-top: 18px; padding: 28px clamp(18px, 5vw, 48px) 34px; background: #f7e99a; }
+    .notice { margin: 0 0 22px; padding: 12px 14px; border-left: 4px solid #111; background: rgba(255,255,255,.48); font-weight: 700; }
+    fieldset { min-width: 0; margin: 0; padding: 0 0 24px; border: 0; }
+    fieldset + fieldset { padding-top: 22px; border-top: 1px solid var(--line); }
+    legend { width: 100%; margin: 0 0 17px; padding: 0; font-size: 1.25rem; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px 20px; }
+    .field { min-width: 0; }
+    .wide { grid-column: 1 / -1; }
+    label, .group-label { display: block; margin: 0 0 6px; font-weight: 600; }
+    .required { color: var(--red); }
+    input, select, textarea {
+      width: 100%; min-height: 46px; padding: 10px 12px;
+      border: 1px solid #b9a94c; border-radius: 4px;
+      background: rgba(255,255,255,.72); color: var(--ink);
+      font: inherit;
+    }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(35,111,205,.22); border-color: #236fcd; }
+    input[type="checkbox"], input[type="radio"] { width: 19px; min-height: 19px; height: 19px; margin: 0 8px 0 0; accent-color: #111; vertical-align: middle; }
+    .choices { display: flex; flex-wrap: wrap; gap: 11px 22px; padding: 4px 0; }
+    .choices label { display: inline-flex; align-items: center; margin: 0; font-weight: 400; }
+    textarea { min-height: 118px; resize: vertical; }
+    .hint { margin: 6px 0 0; color: var(--muted); font-size: .88rem; }
+    .upload { padding: 14px; border: 1px dashed #9b8c37; border-radius: 5px; background: rgba(255,255,255,.35); }
+    .privacy { margin: 4px 0 20px; font-size: .92rem; }
+    .submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    button {
+      min-height: 48px; padding: 12px 28px; border: 0; border-radius: 4px;
+      background: #111; color: #fff; font: inherit; font-weight: 700; cursor: pointer;
+    }
+    button:hover { background: #333; }
+    .status { flex: 1 1 250px; margin: 0; color: #333; font-size: .9rem; }
+    .footer { margin-top: 18px; padding: 18px 22px; background: #111; color: #fff; }
+    .footer a { color: #fff; }
+    @media (max-width: 620px) {
+      .page { width: min(100% - 18px, 900px); margin: 10px auto 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      .form-shell { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="form-shell">
+      <form id="applicationForm" novalidate>
+        <p class="notice">Deine Angaben werden selbstverständlich streng vertraulich und entsprechend der DSGVO behandelt! Mit * gekennzeichnete Felder sind Pflichtfelder.</p>
+
+        <fieldset>
+          <legend>Angaben zur Person</legend>
+          <div class="grid">
+            <div class="field">
+              <label for="nachname">Name <span class="required">*</span></label>
+              <input id="nachname" name="name" autocomplete="family-name" required>
+            </div>
+            <div class="field">
+              <label for="vorname">Vorname <span class="required">*</span></label>
+              <input id="vorname" name="vorname" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="geburtsdatum">Geb.-Datum <span class="required">*</span></label>
+              <input id="geburtsdatum" name="geburtsdatum" type="date" required>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefonnummer <span class="required">*</span></label>
+              <input id="telefon" name="telefonnummer" type="tel" autocomplete="tel" required>
+            </div>
+            <div class="field wide">
+              <label for="strasse">Adresse – Straße und Hausnummer <span class="required">*</span></label>
+              <input id="strasse" name="strasse_hausnummer" autocomplete="street-address" required>
+            </div>
+            <div class="field">
+              <label for="adresszusatz">Adresszusatz</label>
+              <input id="adresszusatz" name="adresszusatz" autocomplete="address-line2">
+            </div>
+            <div class="field">
+              <label for="plz">Postleitzahl <span class="required">*</span></label>
+              <input id="plz" name="postleitzahl" inputmode="numeric" autocomplete="postal-code" required>
+            </div>
+            <div class="field">
+              <label for="ort">Ort <span class="required">*</span></label>
+              <input id="ort" name="ort" autocomplete="address-level2" required>
+            </div>
+            <div class="field">
+              <label for="bundesland">Bundesland</label>
+              <input id="bundesland" name="bundesland" autocomplete="address-level1">
+            </div>
+            <div class="field wide">
+              <label for="email">E-Mail <span class="required">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="beispiel@beispiel.de" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Weitere Angaben</legend>
+          <div class="grid">
+            <div class="field wide">
+              <span class="group-label">Bestehendes Arbeitsverhältnis <span class="required">*</span></span>
+              <div class="choices">
+                <label><input type="radio" name="arbeitsverhaeltnis" value="Ja" required>Ja</label>
+                <label><input type="radio" name="arbeitsverhaeltnis" value="Nein">Nein</label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="eintritt">Frühester Eintrittstermin <span class="required">*</span></label>
+              <input id="eintritt" name="fruehester_eintrittstermin" type="date" required>
+            </div>
+            <div class="field wide">
+              <span class="group-label">Gewünschtes Arbeitszeitmodell <span class="required">*</span></span>
+              <div class="choices">
+                <label><input type="checkbox" name="arbeitszeitmodell[]" value="Vollzeit" required>Vollzeit</label>
+                <label><input type="checkbox" name="arbeitszeitmodell[]" value="Teilzeit">Teilzeit</label>
+                <label><input type="checkbox" name="arbeitszeitmodell[]" value="Stundenweise">Stundenweise</label>
+              </div>
+              <p class="hint">Bitte mindestens eine Möglichkeit auswählen.</p>
+            </div>
+            <div class="field">
+              <label for="stundenumfang">Gewünschter Stundenumfang</label>
+              <select id="stundenumfang" name="stundenumfang">
+                <option value="">Bitte auswählen</option>
+                <option value="8">8</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="fuehrerscheinklasse">Führerscheinklasse <span class="required">*</span></label>
+              <input id="fuehrerscheinklasse" name="fuehrerscheinklasse" placeholder="z. B. B, BE, C1" required>
+            </div>
+            <div class="field">
+              <label for="fuehrerschein_seit">Seit wann im Besitz des FS</label>
+              <input id="fuehrerschein_seit" name="fuehrerschein_seit" type="date">
+            </div>
+            <div class="field wide">
+              <span class="group-label">Personenbeförderungsschein <span class="required">*</span></span>
+              <div class="choices">
+                <label><input type="radio" name="personenbefoerderungsschein" value="Ja" required>Ja</label>
+                <label><input type="radio" name="personenbefoerderungsschein" value="Nein">Nein</label>
+              </div>
+            </div>
+            <div class="field" id="pbsValidityField" hidden>
+              <label for="pbs_gueltig_bis">Personenbeförderungsschein gültig bis <span class="required">*</span></label>
+              <input id="pbs_gueltig_bis" name="pbs_gueltig_bis" type="date" disabled>
+            </div>
+            <div class="field wide">
+              <span class="group-label">Mögliche Spezialisierungen</span>
+              <div class="choices">
+                <label><input type="checkbox" name="spezialisierungen[]" value="Taxi (PKW)">Taxi (PKW)</label>
+                <label><input type="checkbox" name="spezialisierungen[]" value="Taxi (Großraum)">Taxi (Großraum)</label>
+                <label><input type="checkbox" name="spezialisierungen[]" value="Rollstuhl">Rollstuhl</label>
+                <label><input type="checkbox" name="spezialisierungen[]" value="Tragestuhl">Tragestuhl</label>
+                <label><input type="checkbox" name="spezialisierungen[]" value="Liegend">Liegend</label>
+              </div>
+            </div>
+            <div class="field wide">
+              <label for="bemerkungen">Bemerkungen</label>
+              <textarea id="bemerkungen" name="bemerkungen"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Bewerbungsunterlagen</legend>
+          <div class="grid">
+            <div class="field wide">
+              <label for="foto">Foto-Upload <span class="required">*</span></label>
+              <div class="upload">
+                <input id="foto" name="foto" type="file" accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif" required>
+                <p class="hint">Bitte lade hier ein Passfoto oder aussagekräftiges Foto von dir hoch. Akzeptierte Formate: jpg, jpeg, png, gif.</p>
+              </div>
+            </div>
+            <div class="field wide">
+              <label for="unterlagen">Datei-Upload für weitere Unterlagen</label>
+              <div class="upload">
+                <input id="unterlagen" name="weitere_unterlagen" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.html,.zip,.mp3,.wma,.mpg,.flv,.avi,.jpg,.jpeg,.png,.gif">
+                <p class="hint">Hier kannst du Lebenslauf und andere relevante Unterlagen hochladen. Akzeptierte Formate: pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif.</p>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="privacy">
+          Mit dem Absenden deiner Bewerbung erklärst du dich einverstanden, dass wir deine Angaben zur Bearbeitung deiner Bewerbung verarbeiten.
+          Deine Daten werden vertraulich behandelt, nicht an Dritte weitergegeben und nach Abschluss des Verfahrens gemäß den gesetzlichen Vorschriften gelöscht.
+          Detaillierte Informationen findest du in unserer <a href="https://www.taxi-pfeiffer-blankenburg.de/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.
+        </div>
+        <div class="submit-row">
+          <button type="submit">Bewerbung senden</button>
+          <p class="status" id="formStatus" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <strong>Taxi Pfeiffer</strong><br>
+      Westerhäuser Landstraße 17 · 38889 Blankenburg<br>
+      Telefon: <a href="tel:+493944353291">(0 39 44) 353291</a> ·
+      E-Mail: <a href="mailto:info@taxi-pfeiffer-blankenburg.de">info@taxi-pfeiffer-blankenburg.de</a>
+    </footer>
+  </main>
+  <script>
+    // MAKE-Webhook: Datei- und Formularfelder werden als FormData übertragen.
+    const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/of4smvb0qz7k0w4q6w8h3f1odaqecptu";
+
+    const form = document.getElementById("applicationForm");
+    const status = document.getElementById("formStatus");
+    const pbsField = document.getElementById("pbsValidityField");
+    const pbsDate = document.getElementById("pbs_gueltig_bis");
+    const pbsRadios = form.querySelectorAll('input[name="personenbefoerderungsschein"]');
+
+    function updatePbsDateVisibility() {
+      const hasPbs = form.querySelector('input[name="personenbefoerderungsschein"]:checked')?.value === "Ja";
+      pbsField.hidden = !hasPbs;
+      pbsDate.disabled = !hasPbs;
+      pbsDate.required = hasPbs;
+      if (!hasPbs) pbsDate.value = "";
+    }
+    pbsRadios.forEach(radio => radio.addEventListener("change", updatePbsDateVisibility));
+    updatePbsDateVisibility();
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const workChoices = form.querySelectorAll('input[name="arbeitszeitmodell[]"]:checked');
+      if (workChoices.length === 0) {
+        status.textContent = "Bitte wähle mindestens ein Arbeitszeitmodell aus.";
+        form.querySelector('input[name="arbeitszeitmodell[]"]').focus();
+        return;
+      }
+      if (!form.reportValidity()) return;
+
+      if (!MAKE_WEBHOOK_URL) {
+        status.textContent = "Der Versand ist derzeit nicht verfügbar. Bitte versuche es später erneut.";
+        return;
+      }
+
+      const data = new FormData(form);
+      try {
+        const response = await fetch(MAKE_WEBHOOK_URL, {
+          method: "POST",
+          body: data
+        });
+        if (!response.ok) throw new Error("Webhook-Antwort: " + response.status);
+        status.textContent = "Vielen Dank! Deine Bewerbung wurde übermittelt.";
+        form.reset();
+        updatePbsDateVisibility();
+      } catch (error) {
+        status.textContent = "Die Übermittlung ist fehlgeschlagen. Bitte versuche es später erneut oder kontaktiere uns telefonisch.";
+      }
+    });
+  </script>
+</body>
+</html>
